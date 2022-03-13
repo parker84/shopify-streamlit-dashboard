@@ -1,2 +1,2 @@
-# shopify-flask-app
-Example Shopify flask app
+# shopify-streamlit-dashboard
+Example Shopify Streamlit Dashboard

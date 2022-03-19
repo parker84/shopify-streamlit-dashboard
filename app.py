@@ -6,7 +6,7 @@ query_params = st.experimental_get_query_params()
 
 def authenticate(shop:str, state:str):
     response = requests.get(
-        AUTH_ENDPOINT, params={"shop": shop[0], "state": state[0]}, timeout=5001
+        AUTH_ENDPOINT, params={"shop": shop, "state": state}, timeout=5001
     )
     return response
 

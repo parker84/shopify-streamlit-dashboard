@@ -11,7 +11,9 @@ def authenticate(shop:str, state:str):
     return r
 
 st.title(":fire: ShopLit :fire:")
-if authenticate(query_params['shop'], query_params['state']) == 200:
+auth_code = authenticate(query_params['shop'], query_params['state'])
+if auth_code == 200:
+    print(auth_code)
     st.write("Success")
 else:
     st.write('Please Access This App Through Your Shopify Admin')

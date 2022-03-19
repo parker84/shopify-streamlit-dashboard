@@ -7,6 +7,7 @@ import streamlit as st
 # interact with FastAPI endpoint
 AUTH_ENDPOINT = "https://shopify-streamlit.herokuapp.com/dash_auth"
 
+st.text(os.environ)
 url = os.environ["REQUEST_URI"] 
 parsed = urlparse(url) 
 query_params = parse_qs(parsed.query)

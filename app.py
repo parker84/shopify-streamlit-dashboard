@@ -11,9 +11,12 @@ def authenticate(shop:str, state:str):
     return response
 
 st.title(":fire: ShopLit :fire:")
-response = authenticate(query_params['shop'][0], query_params['state'][0])
-print(response)
-if response.status_code == 200:
-    st.write("Success")
-else:
+if 'shop' not in query_params:
     st.write('Please Access This App Through Your Shopify Admin')
+else:
+    response = authenticate(query_params['shop'][0], query_params['state'][0])
+    print(response)
+    if response.status_code == 200:
+        st.write("Success")
+    else:
+        st.write('Please Access This App Through Your Shopify Admin')

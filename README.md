@@ -3,6 +3,9 @@ Example Streamlit Dashboard for a Shopify App.
 
 See the rest of the Shopify App here: https://github.com/parker84/shopify-streamlit-example
 
+<img width="1452" alt="image" src="https://user-images.githubusercontent.com/12496987/159180136-7693f560-f91d-4e44-bc3e-0e059c28d612.png">
+
+
 ## Setup
 
 ### Step 1: Setup this App

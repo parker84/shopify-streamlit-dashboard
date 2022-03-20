@@ -17,7 +17,7 @@ heroku ps:scale web=1
 ```
 
 ### Step 2: Connect to the DB
-The db that you made in step 4 here.
+The db that you made in [step 4 here](https://github.com/parker84/shopify-streamlit-example#step-4-get-your-db-setup-and-start-retrieving-order-data).
 
 Set your db parameters as environmental variables in heroku
 ```sh

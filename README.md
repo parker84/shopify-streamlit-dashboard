@@ -1,5 +1,7 @@
 # shopify-streamlit-dashboard
-Example Shopify Streamlit Dashboard
+Example Streamlit Dashboard for a Shopify App.
+
+See the rest of the Shopify App here: https://github.com/parker84/shopify-streamlit-example
 
 ## Setup
 

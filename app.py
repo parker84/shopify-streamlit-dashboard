@@ -31,6 +31,6 @@ else:
         st.write("Success")
         if ENGINE_PATH is not None:
             df = pd.read_sql(f'select * from orders_{shop.replace(".", "_")} limit 20', con=conn)
-            st.table(df)
+            st.dataframe(df)
     else:
         st.write('Please Access This App Through Your Shopify Admin')

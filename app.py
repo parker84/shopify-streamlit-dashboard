@@ -1,50 +1,22 @@
-import io
-
 import requests
-from PIL import Image
-from requests_toolbelt.multipart.encoder import MultipartEncoder
-
 import streamlit as st
 
-# interact with FastAPI endpoint
-backend = "http://fastapi:5001/segmentation"
+AUTH_ENDPOINT = "https://shopify-streamlit.herokuapp.com/dash_auth"
+query_params = st.experimental_get_query_params()
 
-
-def process(image, server_url: str):
-
-    m = MultipartEncoder(fields={"file": ("filename", image, "image/jpeg")})
-
-    r = requests.post(
-        server_url, data=m, headers={"Content-Type": m.content_type}, timeout=5001
+def authenticate(shop:str, state:str):
+    response = requests.get(
+        AUTH_ENDPOINT, params={"shop": shop, "state": state}, timeout=5001
     )
+    return response
 
-    return r
-
-
-# construct UI layout
-st.title("DeepLabV3 image segmentation")
-
-st.write(
-    """Obtain semantic segmentation maps of the image in input via DeepLabV3 implemented in PyTorch.
-         This streamlit example uses a FastAPI service as backend.
-         Visit this URL at `:5001/docs` for FastAPI documentation."""
-)  # description and instructions
-
-input_image = st.file_uploader("insert image")  # image upload widget
-
-if st.button("Get segmentation map"):
-
-    col1, col2 = st.columns(2)
-
-    if input_image:
-        segments = process(input_image, backend)
-        original_image = Image.open(input_image).convert("RGB")
-        segmented_image = Image.open(io.BytesIO(segments.content)).convert("RGB")
-        col1.header("Original")
-        col1.image(original_image, use_column_width=True)
-        col2.header("Segmented")
-        col2.image(segmented_image, use_column_width=True)
-
+st.title(":fire: ShopLit :fire:")
+if 'shop' not in query_params:
+    st.write('Please Access This App Through Your Shopify Admin')
+else:
+    response = authenticate(query_params['shop'][0], query_params['state'][0])
+    print(response)
+    if response.status_code == 200:
+        st.write("Success")
     else:
-        # handle case with no image
-        st.write("Insert an image!")
+        st.write('Please Access This App Through Your Shopify Admin')

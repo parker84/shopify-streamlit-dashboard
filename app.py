@@ -30,7 +30,8 @@ else:
     if response.status_code == 200:
         st.write("Success")
         if ENGINE_PATH is not None:
-            df = pd.read_sql(f'select * from orders_{shop.replace(".", "_")} limit 20', con=conn)
+            st.write("Here's the last 20 orders for your shop:")
+            df = pd.read_sql(f'select * from orders_{shop.replace(".", "_")} order by to_timestamp(created_at) desc limit 20', con=conn)
             st.dataframe(df)
     else:
         st.write('Please Access This App Through Your Shopify Admin')
